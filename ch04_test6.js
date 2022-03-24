@@ -8,3 +8,5 @@ var data = fs.readFile('./package.json', 'utf8', function(err, data){
 
 //읽어들인 데이터를 출력합니다.
 console.log('프로젝트 폴더 안의 package.json 파일을 읽도록 요청했습니다');
+
+//만약 서버가 중복되었다는 에러가 발생하면? 작업관리자에서 서버 종료...
