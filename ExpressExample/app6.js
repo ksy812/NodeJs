@@ -9,8 +9,10 @@ app.use(function(req, res, next){
    
    var userAgent = req.header('User-Agent');
    var paramName = req.query.name;
+   var accept = req.accept; //*****
    res.writeHead('200', {'Content-Type':'text/html; charset=utf8'});
    res.write('<h1>Express 서버에서 응답한 결과입니다.</h1>');
+   res.write('<div><p>Accept : '+ accept +'</p></div>'); //*****
    res.write('<div><p>User-Agent : '+ userAgent +'</p></div>');
    res.write('<div><p>Param name : '+ paramName +'</p></div>');
    res.end();
