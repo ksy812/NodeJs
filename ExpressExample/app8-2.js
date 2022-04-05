@@ -6,7 +6,7 @@ var path = require('path');
 //Express 객체 생성
 var bodyParser = require('body-parser');
 var static = require('serve-static');
-const { runInNewContext } = require('vm');
+//const { runInNewContext } = require('vm');
 
 //기본 속성 설정
 var app = express();
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use('/public', static(path.join(__dirname, 'public')));
 
 var router = express.Router();
-router.route('./process/login/:name').post(function(req, res){
+router.route('/process/login/:name').post(function(req, res){
     console.log('/process/login/:name 처리함.');
 
     var paramName = req.params.name;
@@ -29,7 +29,7 @@ router.route('./process/login/:name').post(function(req, res){
     var paramId = req.body.id || req.query.id;
     var paramPassword = req.body.password || req.query.password;
 
-    res.writeHead('200', {'Content-type':'text/html; charset=utf8'});
+    res.writeHead('200', {'Content-Type':'text/html; charset=utf8'});
     res.write('<h1>Express 서버에서 응답한 결과입니다.</h1>');
     res.write('<div><p>Param name : '+ paramName +'</p></div>');
     res.write('<div><p>Param id : '+ paramId +'</p></div>');
@@ -38,11 +38,11 @@ router.route('./process/login/:name').post(function(req, res){
     res.end();
 });
 
-app.use('/', router);
+app.use('/', router); //위치 중요
 
-// app.all('*', function(req, res){
-//     res.status(404).send('<h1>ERROR - 페이지를 찾을 수 없습니다.</h1>');
-// });
+app.all('*', function(req, res){ //옳지 않은 경로일 경우 ERROR 메세지
+    res.status(404).send('<h1>ERROR - 페이지를 찾을 수 없습니다.</h1>');
+});
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express 서버가 3000번 포트에서 시작됨.');
