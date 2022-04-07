@@ -11,9 +11,9 @@ var bodyParser = require('body-parser')
 
 //에러 핸들러 모듈 사용
 var expressErrorHandler = require('express-error-handler');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
 //Session 미들웨어 불러오기
-var expressSession = require('express');
+var expressSession = require('express-session');
 //const { equal } = require('assert');
 
 // 익스프레스 객체 생성
@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(expressSession({
 	secret:'my key',
 	resave:true,
-	saveUninialized: true
+	saveUninitialized: true
 }));
 
 // 라우터 사용하여 라우팅 함수 등록
@@ -45,7 +45,7 @@ router.route('/process/login').post(function(req, res){
 	var paramId = req.body.id || req.query.id;
 	var paramPassword = req.body.password || req.query.password;
  
-	if(!req.session.user){
+	if(req.session.user){
 		console.log('이미 로그인되어 상품 페이지로 이동합니다.');
 		res.redirect('/product.html');
 	}else{
@@ -60,7 +60,7 @@ router.route('/process/login').post(function(req, res){
 		res.write('<h1>로그인 성공</h1>');
 		res.write('<div><p>Param id: '+ paramId +'</p></div>');
 		res.write('<div><p>Param password: '+ paramPassword +'</p></div>');
-		res.write('<br><br><a href="/process/product">상품 페이지로 이동하기</a>');
+		res.write('<br><br><button><a href="/process/product">상품 페이지로 이동하기</a></button>');
 		res.end();
 	}
 });
@@ -74,7 +74,7 @@ router.route('/process/logout').get(function(req, res){
 			if(err) { throw err; }
 			console.log('세션을 삭제하고 로그아웃 되었습니다.');
 			res.redirect('/login2.html');
-		})
+		});
 	}
 });
 
@@ -91,7 +91,7 @@ app.use('/', router);
 //404 에러 페이지 처리
 var errorHandler = expressErrorHandler({
 	static:{
-		'404':'./public/404.html' //******************
+		'404':'ExpressExample/public/404.html' //******************
 	}
 });
 app.use(expressErrorHandler.httpError(404));
