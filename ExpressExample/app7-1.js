@@ -9,7 +9,7 @@ var static = require('serve-static');
 
 //기본 속성 설정
 var app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3003);
 
 //body-parse를 이용해 application/x-www-form-urlencoded 파싱
 app.use(bodyParser.urlencoded({extended: false}));
