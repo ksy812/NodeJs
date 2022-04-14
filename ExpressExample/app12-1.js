@@ -51,8 +51,7 @@ router.route('/process/login').post(function(req, res){
 	}else{
 		req.session.user = {
 			id:paramId,
-			//password:paramPassword,
-			name:'이름',
+			name:'3205김소연',
 			authorized:true
 		};
 
@@ -75,6 +74,10 @@ router.route('/process/logout').get(function(req, res){
 			console.log('세션을 삭제하고 로그아웃 되었습니다.');
 			res.redirect('/login2.html');
 		});
+	}else{
+		//로그인 안된 상태
+		console.log('아직 로그인되어있지 않습니다.');
+		res.redirect('/public/login2.html');
 	}
 });
 
