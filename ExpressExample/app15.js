@@ -39,7 +39,8 @@ app.use(express.json())
 
 // public 폴더와 uploads 폴더 오픈
 app.use(static(path.join(__dirname, 'public')));
-app.use('/uploads', static(path.join(__dirname, 'uploads')));
+//***********8app14.js에서 바뀐 내용
+//app.use('/uploads', static(path.join(__dirname, 'uploads'))); 
 
 // cookie-parser 설정
 app.use(cookieParser());
@@ -89,7 +90,6 @@ router.route('/process/photo12').post(upload.array('photo12', 12), function(req,
 	res.writeHead('200', {'Content-Type':'text/html;charset=utf8'})
 	try {
 		var files = req.files;
-		
         
 		// 현재의 파일 정보를 저장할 변수 선언
 			filename = '',

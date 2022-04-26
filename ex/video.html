@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <title>BootStrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="continer mt-3" class="bg-primary">
+             <div class="media-border p-1" class="bg-primary">
+                 <div class="media-body">
+                     <div style="text-align:center">
+                        <video>
+                            <source src="multi.mov_bbb.mp4" type="video.mp4">
+                            <source src="multi.mov_bbb.mp4" type="video.ogg">
+                            Your brawer does not supprt HTML video.
+                        </video>
+                        <br>
+                        <button type="button" class="btn btn-danger btn-sm" onClick="PlayPause()">Play/Pause</button>
+                        <button type="button" class="btn btn-success btn-sm" onClick="makeBig()">Big</button>
+                        <button type="button" class="btn btn-info btn-sm" onClick="makeSmall()">Small</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick="makeNormal()">Normal</button>
+                    </div>
+                    <script>
+                        var myVideo = document.getElementById("video1");
+                        function playPause(){
+                            if(myVideo.paused)
+                               myVideo.play();
+                           else
+                               myVideo.pause();
+                        }
+                        function makeBig(){
+                            myVideo.width = 300;
+                        }
+                        function makeSmall(){
+                            myVideo.width = 200;
+                        }
+                        function makeNormal(){
+                            myVideo.width = 250;
+                        }
+                    </script>
+                 </div> <!--   <table class="media-body"> -->
+             </div><!-- <div class="media-border p-1" class="bg-primary"> -->
+        </div><!-- <div class="continer mt-3" class="bg-primary"> -->
+    </div><!-- <div class="container"> -->
+    <br><br>
+    <center><button type="button" class="btn btn-outline-primary">
+        <a href="index.html">HOME</a></button>
+    </center>
+</body>
+</html>
