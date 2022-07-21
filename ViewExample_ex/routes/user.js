@@ -180,7 +180,7 @@ var listuser = function (req, res) {
 						res.end(html);
 					});
 				};
-				//view - listuser 수정4 후 시작 - listuser_fail
+				//view - listuser 수정4 후 끝 - listuser_fail.ejs
 			}
 		});//database.UserModel.findAll -end
 	} else {
